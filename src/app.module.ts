@@ -19,7 +19,8 @@ import { Booking } from './entities/booking.entity';
       password: process.env.DB_PASS || 'password',
       database: process.env.DB_NAME || 'urban_booking',
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: process.env.NODE_ENV !== 'production',
+
     }),
     TypeOrmModule.forFeature([Carpenter, Booking]),
     CarpentersModule,
